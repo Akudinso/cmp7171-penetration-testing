@@ -1,0 +1,125 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.pdfsync
+*.lof
+*.lot
+*.bcf
+*.blg
+*.bbl
+*.run.xml
+
+# Compiled PDF (optional - include if you want to distribute PDF)
+# main.pdf
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+
+# Vim
+.vim/
+*.swp
+*.swo
+*~
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ / PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# System files
+.~*
+.#*
+
+# Sensitive information
+.env
+.env.local
+credentials.txt
+api_keys.txt
+passwords.txt
+
+# Large files (uncomment if needed)
+# *.iso
+# *.zip
+# *.tar.gz
+
+# Node modules (if included)
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Video files (if needed to keep size down)
+# *.mp4
+# *.mov
+# *.avi
+
+# ISO/disk images
+*.iso
+*.img
+
+# Local development
+*.local
+local_config/
+
+# Build directories
+build/
+dist/
+.gradle/
+.maven/
+
+# IDE temporary files
+*.orig
+.project
+.classpath
+
+# Archive files
+*.rar
+*.7z
+
+# Dependency files
+/vendor/
+/node_modules/
+/venv/
+/env/
+
+# Configuration with secrets
+config.local.ini
+config.dev.yml
+secrets.yaml
+
+# Temporary test outputs
+test-output/
+*.test
+test.log
