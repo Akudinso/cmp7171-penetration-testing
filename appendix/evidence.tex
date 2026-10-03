@@ -1,0 +1,125 @@
+\appendix
+
+\section{Evidence Screenshots and Exploitation Logs}
+
+This appendix contains all evidence screenshots and logs documenting the reconnaissance, enumeration, exploitation, and post-exploitation phases of the penetration testing engagement.
+
+\subsection{Network Discovery Evidence}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/network-discovery/01_ip_addr_output.png}
+    \caption{Local Interface Configuration - IP Address Discovery}
+    \label{fig:ip_addr}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/network-discovery/02_nmap_ping_sweep.png}
+    \caption{Network Ping Sweep - Host Discovery (4 Hosts Found)}
+    \label{fig:nmap_ping}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/network-discovery/03_nmap_full_scan_dc31_01.png}
+    \caption{Service Enumeration - Gitea Discovery on Port 3000/tcp}
+    \label{fig:nmap_gitea}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/network-discovery/04_nmap_openfire_discovery.png}
+    \caption{Service Enumeration - Openfire Discovery (Ports 5222, 5275, 9090)}
+    \label{fig:nmap_openfire}
+\end{figure}
+
+\subsection{DC31\_01 (Gitea v1.4.0) - Exploitation Evidence}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/gitea-screenshots/01_gitea_dashboard.png}
+    \caption{Gitea Repository Dashboard - Unauthenticated Administrative Access}
+    \label{fig:gitea_dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/gitea-screenshots/02_git_hooks_menu.png}
+    \caption{Git Hooks Configuration - Malicious Post-Receive Hook Payload}
+    \label{fig:git_hooks}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/gitea-screenshots/03_reverse_shell_git_push.png}
+    \caption{Git Push Command Execution - Reverse Shell Callback and Git Commit}
+    \label{fig:git_push}
+\end{figure}
+
+\subsection{DC31\_02 (Redis v5.0.7) - Enumeration and Exploitation Evidence}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/redis-enumeration/01_nmap_redis_discovery.png}
+    \caption{Redis Service Discovery - Nmap Output Showing Redis 5.0.7 on Port 6379/tcp}
+    \label{fig:nmap_redis}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/redis-enumeration/02_redis_cli_unauthenticated.png}
+    \caption{Unauthenticated Redis Access - redis-cli Connection Without Password}
+    \label{fig:redis_cli}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/01_metasploit_redis_module_exploit.png}
+    \caption{Metasploit Module Configuration - Redis Replication Command Execution Setup}
+    \label{fig:msf_redis_config}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/02_redis_reverse_shell_session.png}
+    \caption{Root Shell Access - Redis Post-Exploitation Session (uid=0, whoami=root)}
+    \label{fig:redis_shell}
+\end{figure}
+
+\subsection{DC31\_03 (Openfire v4.7.4) - Exploitation Evidence}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/openfire-screenshots/01_openfire_admin_console.png}
+    \caption{Openfire Admin Console - Server Information and Configuration Access}
+    \label{fig:openfire_console}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/03_metasploit_openfire_search.png}
+    \caption{Metasploit Module Search - CVE-2023-32315 Exploit Identification}
+    \label{fig:msf_openfire_search}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/04_openfire_exploit_configuration.png}
+    \caption{Exploit Module Configuration - CVE-2023-32315 Options and Target Settings}
+    \label{fig:msf_openfire_config}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/05_openfire_exploit_execution.png}
+    \caption{Exploit Execution - Plugin Injection and Administrative User Creation}
+    \label{fig:openfire_exploit}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{evidence/metasploit-logs/06_openfire_root_shell_confirmation.png}
+    \caption{Root Shell Access Confirmation - uid=0(root) and gid=0(root) Privileges}
+    \label{fig:openfire_shell}
+\end{figure}

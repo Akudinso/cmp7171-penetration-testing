@@ -1,0 +1,23 @@
+\section{Evidence Summary}
+
+\subsection{Network Discovery}
+
+The reconnaissance phase identified four active hosts within the target network segment (10.75.134.0/24):
+\begin{itemize}
+    \item 10.75.134.1 - Gateway/Router
+    \item 10.75.134.90 - Gitea v1.4.0 (Port 3000/tcp)
+    \item 10.75.134.92 - Redis v5.0.7 (Port 6379/tcp)
+    \item 10.75.134.94 - Openfire v4.7.4 (Ports 5222, 5275, 9090/tcp)
+\end{itemize}
+
+\subsection{DC31\_01 Exploitation Summary}
+
+The Gitea installation lacked the \texttt{INSTALL\_LOCK} configuration protection, exposing the administrative setup interface. Through this interface, a complete administrative account was created, providing access to repository management and Git hook configuration. The post-receive hook was weaponized with a reverse shell payload, achieving Remote Code Execution upon git push operations. Post-exploitation confirmed shell access as the git user (uid=1000).
+
+\subsection{DC31\_02 Exploitation Summary}
+
+Redis was deployed without any authentication mechanism (\texttt{requirepass} unset). Unauthenticated access via redis-cli confirmed complete lack of access controls. The Metasploit Framework module \texttt{exploit/linux/redis/redis\_replication\_cmd\_exec} was leveraged to compile and load a malicious C extension as a Redis module, executing arbitrary commands with root privileges (uid=0). Post-exploitation confirmed complete system compromise.
+
+\subsection{DC31\_03 Exploitation Summary}
+
+Openfire accepted default factory credentials (admin/admin) on the administrative console. The system was vulnerable to CVE-2023-32315, enabling path traversal and unauthorized plugin upload. The Metasploit Framework module \texttt{exploit/multi/http/openfire\_auth\_bypass\_rce\_cve\_2023\_32315} automated the exploitation chain: path traversal to bypass authentication, temporary administrative user creation, malicious Java plugin upload, and reverse shell execution. Post-exploitation confirmed root-level access (uid=0(root), gid=0(root)).
